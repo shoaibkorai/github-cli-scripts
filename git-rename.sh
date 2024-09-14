@@ -1,25 +1,29 @@
 #!/bin/bash
 
-# Check if GitHub CLI is installed
-if ! command -v gh &> /dev/null; then
-  echo "GitHub CLI (gh) could not be found. Please install it first."
-  exit 1
+# Function to print usage instructions
+usage() {
+    echo "Usage: $0 <current-repo-name> <new-repo-name>"
+    exit 1
+}
+
+# Check if the required number of arguments is provided
+if [ "$#" -ne 2 ]; then
+    usage
 fi
 
-# Check if two arguments are provided: old_name and new_name
-if [ $# -ne 2 ]; then
-  echo "Usage: $0 <old-repository-name> <new-repository-name>"
-  exit 1
+# Set variables for the current and new repository names
+CURRENT_REPO=$1
+NEW_REPO=$2
+USERNAME="shoaibkorai"
+
+# Rename the repository using the GitHub CLI
+echo "Renaming repository '$CURRENT_REPO' to '$NEW_REPO' for user '$USERNAME'..."
+gh repo rename "$NEW_REPO" --repo "$USERNAME/$CURRENT_REPO" -y
+
+# Check if the rename was successful
+if [ $? -eq 0 ]; then
+    echo "Repository renamed successfully!"
+else
+    echo "Failed to rename repository."
 fi
-
-OLD_REPO_NAME=$1
-NEW_REPO_NAME=$2
-
-# Rename the repository on GitHub
-gh repo rename $OLD_REPO_NAME $NEW_REPO_NAME
-
-# Update local Git repository remote URL
-git remote set-url origin git@github.com:$(gh repo view $NEW_REPO_NAME --json owner --jq .owner.login)/$NEW_REPO_NAME.git
-
-echo "Repository renamed from $OLD_REPO_NAME to $NEW_REPO_NAME successfully."
 

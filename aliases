@@ -1,0 +1,22 @@
+# Repository Management
+alias gh-create-repo="bash /home/shoaib/scripts/github-scripts/git-create.sh"    # Create a new GitHub repository
+alias gh-list-repos='gh repo list'                                               # List all repositories
+alias gh-delete-repo="bash /home/shoaib/scripts/github-scripts/git-repodel.sh"   # Delete a repository
+alias gh-rename-repo="bash /home/shoaib/scripts/github-scripts/git-rename.sh"    # Rename a repository
+alias gh-view-repo="bash /home/shoaib/scripts/github-scripts/git-repo-view.sh"   # View repository details
+alias gh-clone-repo="bash /home/shoaib/scripts/github-scripts/git-clone.sh"      # Clone a repository
+
+# Push and Sync
+alias gh-push="bash /home/shoaib/scripts/github-scripts/git-push.sh"             # Push changes to GitHub
+alias gh-push-short="bash /home/shoaib/scripts/github-scripts/git-push.sh"       # Short alias for pushing
+alias gh-public="bash /home/shoaib/scripts/github-scripts/git-repo-public.sh"    # Make a repository public
+
+# Git Shortcuts
+alias gh-status="git status"                                                     # Git status
+alias gh-delete="bash /home/shoaib/scripts/github-scripts/git-repodel.sh"        # Delete a repository (short alias)
+alias gh-rename="bash /home/shoaib/scripts/github-scripts/git-rename.sh"         # Rename a repository (short alias)
+
+# Contributions and Forking
+alias gh-fork="gh repo fork"                                                     # Fork a repository
+alias gh-branch="bash /home/shoaib/scripts/github-scripts/create_branch.sh"      # Create a new branch
+alias gh-pull="bash /home/shoaib/scripts/github-scripts/create_pull_request.sh"  # Create a pull request
